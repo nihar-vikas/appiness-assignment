@@ -1,0 +1,34 @@
+.user_dashboard_body {
+    .user_dashboard_header_div {
+        padding: 20px 10px;
+        .user_dashboard_header {
+            font-size: 30px;
+            font-weight: bold;
+            font-family: Poppins;
+            color: #0BDEA8;
+            margin: 0px !important;
+      }
+    }
+    .user_dashboard_body_div {
+        padding: 0px 10px;
+    }
+}
+
+.dashboard-card {
+    padding: 10px;
+    .dashboard-card-div {
+        background-color: #FEDB9F;
+        border: 1px solid #EBEBEB;
+        border-radius: 5px;
+        padding: 10px;
+        &:hover {
+            transform: scale(1.0);
+            box-shadow: 5px 5px 5px #00000014;
+        }
+    }
+    .dashbord_lable {
+        color: #004A9D;
+        font-size: 15px;
+        font-family: Poppins;
+    }
+}
