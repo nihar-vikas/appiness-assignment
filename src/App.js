@@ -2,7 +2,9 @@ import React from 'react';
 import 'antd/dist/antd.css';
 import { Row, Col } from 'antd';
 import { useSelector } from 'react-redux';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import {
+  BrowserRouter, Switch, Route, Redirect,
+} from 'react-router-dom';
 import NavBar from './components/navbar';
 import LoginForm from './components/loginForm';
 import Dashboard from './components/dashboard';
@@ -19,7 +21,8 @@ const App = () => {
       </Row>
       <BrowserRouter>
         <Switch>
-          <Route path="/" exact component={userResponse?.authData?.userLogin ? Dashboard : LoginForm} />
+          <Route path="/" exact component={userResponse?.authData?.userLogin ? () => <Redirect to="/dashboard" /> : LoginForm} />
+          <Route path="/dashboard" component={!userResponse?.authData?.userLogin ? () => <Redirect to="/" /> : Dashboard} />
         </Switch>
       </BrowserRouter>
     </>
