@@ -3,6 +3,7 @@ import {
   Row, Col, Button, Avatar,
 } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
+import { LogoutOutlined } from '@ant-design/icons';
 import Logo from '../../assets/logo.png';
 import { UserLogIn, UserLogOut } from '../../actions/auth';
 import './style.scss';
@@ -38,7 +39,10 @@ const NavBar = () => {
                     &nbsp;&nbsp;
                   <span>hruday</span>
                     &nbsp;&nbsp;
-                  <Button type="primary" className="logout_btn" onClick={handleLogOut}>Logout</Button>
+                  <Button type="primary" className="logout_btn" onClick={handleLogOut}>
+                    Logout&nbsp;
+                    <LogoutOutlined />
+                  </Button>
                 </Row>
               </Col>
             ) : ''}
