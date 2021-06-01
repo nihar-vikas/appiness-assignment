@@ -8,6 +8,8 @@ import {
 import NavBar from './components/navbar';
 import LoginForm from './components/loginForm';
 import Dashboard from './components/dashboard';
+import LogOutPage from './components/logOutpage';
+import PageNotFound from './components/pageNotFound';
 
 const App = () => {
   const userResponse = useSelector((state) => state.AuthReduser);
@@ -23,6 +25,8 @@ const App = () => {
         <Switch>
           <Route path="/" exact component={userResponse?.authData?.userLogin ? () => <Redirect to="/dashboard" /> : LoginForm} />
           <Route path="/dashboard" component={!userResponse?.authData?.userLogin ? () => <Redirect to="/" /> : Dashboard} />
+          <Route path="/logout" component={LogOutPage} />
+          <Route path="**" component={PageNotFound} />
         </Switch>
       </BrowserRouter>
     </>

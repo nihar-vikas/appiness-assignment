@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import './style.scss';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { UserLogIn } from '../../actions/auth';
+import loginImage from '../../assets/login.svg';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -31,7 +32,7 @@ const LoginForm = () => {
   return (
     <>
       <Row>
-        <Col md={8} xs={1} />
+        <Col md={2} xs={1} />
         <Col md={8} xs={22} className="login-form-body">
           <Row>
             <Col md={24} xs={24} className="login-form-cell">
@@ -84,7 +85,11 @@ const LoginForm = () => {
             </Col>
           </Row>
         </Col>
-        <Col md={8} xs={1} />
+        <Col md={2} xs={1} />
+        <Col md={8} xs={0} style={{ marginTop: '120px' }}>
+          <img src={loginImage} alt="crash" className="login-image" />
+        </Col>
+        <Col md={2} xs={1} />
       </Row>
     </>
   );

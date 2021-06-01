@@ -16,5 +16,5 @@ export const UserLogIn = (Data) => async (dispatch) => {
 
 export const UserLogOut = () => async (dispatch) => {
   window.localStorage.removeItem('profile');
-  dispatch({ type: LOGOUT, data: { userLogin: false } || [] });
+  dispatch({ type: LOGOUT, data: { userLogin: false, setLogOut: true } || [] });
 };

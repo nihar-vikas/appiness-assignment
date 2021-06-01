@@ -1,0 +1,29 @@
+.page-not-found-body {
+    .page-not-found-cell {
+        margin: 0px 0px;
+        .page-not-found-card {
+            position: absolute;
+            top:0;
+            left: 0;
+            transform: translate(0%, 20%);
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            border-radius: 5px;
+            padding: 20px 10px;
+            box-shadow: 6px 6px 6px #00000014;
+        }
+        .page-not-found-image {
+            height: 300px !important;
+            width: 100% !important;
+            image-rendering: pixelated;
+        }
+        .page-not-found-footer {
+            background-color: #f4fcf5;
+            width: 100% !important;
+            padding: 20px !important;
+            font-family: Poppins;
+            color: #3B4452;
+            text-align: center;
+        }
+    }
+}
