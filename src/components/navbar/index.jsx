@@ -5,7 +5,9 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import { LogoutOutlined } from '@ant-design/icons';
 import Logo from '../../assets/logo.png';
-import { UserLogIn, UserLogOut } from '../../actions/auth';
+import { UserLogOut } from '../../actions/auth';
+import { LOGIN } from '../../constants/actionTypes';
+
 import './style.scss';
 
 const NavBar = () => {
@@ -14,7 +16,7 @@ const NavBar = () => {
   useEffect(() => {
     const userDetails = JSON.parse(window.localStorage.getItem('profile'));
     if (userDetails) {
-      dispatch(UserLogIn(userDetails));
+      dispatch({ type: LOGIN, data: { userLogin: true, ...userDetails } || [] });
     }
   }, []);
 
@@ -34,10 +36,10 @@ const NavBar = () => {
               <Col md={18} xs={14} style={{ textAlign: 'end', fontFamily: 'Poppins', color: '#2A5583' }}>
                 <Row align="middle" justify="end">
                   <Avatar style={{ backgroundColor: '#87d068', cursor: 'pointer' }}>
-                    {'hruday'?.charAt(0)?.toUpperCase()}
+                    {userResponse?.authData?.userDetails?.name?.charAt(0)?.toUpperCase()}
                   </Avatar>
                     &nbsp;&nbsp;
-                  <span>hruday</span>
+                  <span>{userResponse?.authData?.userDetails?.name}</span>
                     &nbsp;&nbsp;
                   <Button type="primary" className="logout_btn" onClick={handleLogOut}>
                     Logout&nbsp;

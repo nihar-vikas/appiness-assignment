@@ -6,7 +6,6 @@ import DashboardCard from './dashboard-card';
 
 const Dashboard = () => {
   const userDetails = UserData;
-
   return (
     <>
       <Row className="user_dashboard_body">

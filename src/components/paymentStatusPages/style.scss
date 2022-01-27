@@ -1,0 +1,118 @@
+@import "../../globel.scss";
+.payment-Success-Page-body {
+  line-height: inherit !important;
+  text-align: center;
+  width: 100%;
+  height: 100% !important;
+  margin: 20px 0px !important;
+  background-size: 100px, 100px, auto;
+  .payment-success-page-cells {
+    .payment-Success-Lable {
+      letter-spacing: var(--unnamed-character-spacing-0);
+      font: Regular 30px/36px Inter;
+      color: #1aac10;
+      opacity: 1;
+      font-weight: 600;
+      font-size: 30px !important;
+    }
+    .payment-Success-thank-you-Lable {
+      font: Bold 204px var(--unnamed-font-family-open-sans);
+      letter-spacing: var(--unnamed-character-spacing-0);
+      color: #c4bebe;
+      opacity: 0.7 !important;
+      font-weight : bold !important;
+      font-size: 50px !important;;
+      @include desktop {
+        font-size: 100px !important;;
+      }
+    }
+    .payment-Success-sub-Lable {
+      font: Regular 22px/30px var(--unnamed-font-family-open-sans);
+      letter-spacing: var(--unnamed-character-spacing-0);
+      text-align: center;
+      font: Regular 22px/30px Open Sans;
+      color: #4e4e4e;
+      opacity: 1;
+      font-size: 18px !important;
+    }
+    .payment-Success-download-button {
+      background: #09a004 0% 0% no-repeat padding-box;
+      border-radius: 6px;
+      opacity: 1;
+      color: #ffffff;
+      width: 100%;
+      margin-top: 10px;
+      display: none;
+    }
+    .payment-Success-back-button {
+      border: 1px solid var(--unnamed-color-09a004);
+      background: #ffffff 0% 0% no-repeat padding-box;
+      border: 1px solid #09a004;
+      color: #09a004;
+      border-radius: 6px;
+      opacity: 1;
+      width: 100%;
+    }
+  }
+}
+
+.paymentFailPagebody{
+    text-align: center;
+    line-height: initial !important;
+    width: 100%;
+    height: 100% !important;
+    margin-bottom: 30px !important;
+    background-size: 100px, 100px, auto;
+
+    .paymentFailLable{
+        letter-spacing: var(--unnamed-character-spacing-0);
+        text-align: left;
+        font: Regular 30px/36px Inter;
+        color: #E92222;
+        opacity: 1;
+        font-size: 30px;
+    }
+    .tryLable{
+        font: Bold 204px var(--unnamed-font-family-open-sans);
+        letter-spacing: var(--unnamed-character-spacing-0);
+        color: #c4bebe;
+        font-weight: bold !important;
+        opacity: 0.7;   
+        font-size: 50px;
+        @include desktop {
+          font-size: 100px;
+          padding: 10px 0px 20px 0px;
+        }
+    }
+    .PaymentFailImage{
+        margin-top: 10px;
+        max-height: 300px;
+        width: 100%;
+    }
+    .subtext{
+        font: Regular 22px/30px var(--unnamed-font-family-open-sans);
+        letter-spacing: var(--unnamed-character-spacing-0);
+        text-align: center;
+        font: Regular 22px/30px Open Sans;
+        color: #4E4E4E;
+        opacity: 1;
+    }
+    .tryButton{
+        background: #09A004 0% 0% no-repeat padding-box;
+        border-radius: 6px;
+        opacity: 1;
+        color: #FFFFFF;
+        width: 100%;
+        margin-top: 10px;
+    }
+    .backButton{
+        background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        border: 1px solid #2049CF;
+        color: #2049CF;
+        border-radius: 6px;
+        opacity: 1;
+        width: 100%;
+        margin-top: 10px;
+    }
+}

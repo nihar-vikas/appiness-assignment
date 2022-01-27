@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import {
   Row, Col, Avatar, Input, Button, message,
 } from 'antd';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import './style.scss';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { UserLogIn } from '../../actions/auth';
@@ -11,14 +12,20 @@ import loginImage from '../../assets/login.svg';
 const LoginForm = () => {
   const dispatch = useDispatch();
   const filterEmailId = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-  const [auth, setAuth] = useState({ username: '', password: '' });
+  const [auth, setAuth] = useState({ email: '', password: '', loginType: 'manual' });
+  const history = useHistory();
+  const loading = useSelector((state) => state?.AuthReduser?.loading);
 
+  const callback = () => {
+    setAuth({ email: '', password: '', loginType: 'manual' });
+    history.push('/');
+  };
   const handleLogin = () => {
-    if (!auth.username) {
+    if (!auth.email) {
       message.warning('Please Enter Email Address');
       return;
     }
-    if (auth?.username?.match(filterEmailId) === null) {
+    if (auth?.email?.match(filterEmailId) === null) {
       message.warning('Please Valid Email Address');
       return;
     }
@@ -26,12 +33,12 @@ const LoginForm = () => {
       message.warning('Please Enter Password');
       return;
     }
-    dispatch(UserLogIn(auth));
+    dispatch(UserLogIn('login', auth, callback));
   };
 
   return (
     <>
-      <Row>
+      <Row style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-around' }}>
         <Col md={2} xs={1} />
         <Col md={8} xs={22} className="login-form-body">
           <Row>
@@ -54,15 +61,15 @@ const LoginForm = () => {
                   <h6 className="login-form-labels">Email Address</h6>
                   <Input
                     prefix={<UserOutlined />}
-                    value={auth?.username}
+                    value={auth?.email}
                     type="email"
                     className="login-form-text-input"
                     allowClear
                     placeholder="Enter Email address"
-                    onChange={(e) => setAuth({ ...auth, username: e.target.value.trimLeft() })}
+                    onChange={(e) => setAuth({ ...auth, email: e.target.value.trimLeft() })}
                   />
                   <h6 className="helper_text">
-                    {auth?.username && auth?.username?.match(filterEmailId) === null ? 'Please Enter a Valid Email Address' : ''}
+                    {auth?.email && auth?.email?.match(filterEmailId) === null ? 'Please Enter a Valid Email Address' : ''}
                   </h6>
                 </Col>
                 <Col md={24} xs={24} className="login-form-cells">
@@ -79,14 +86,21 @@ const LoginForm = () => {
                   />
                 </Col>
                 <Col md={24} xs={24} className="login-form-cells">
-                  <Button type="primary" className="login-form-btn" onClick={handleLogin}>Login</Button>
+                  <Button loading={loading} type="primary" className="login-form-btn" onClick={handleLogin}>Login</Button>
+                </Col>
+                <Col md={24} xs={24} className="login-form-cells">
+                  <h6 className="helper_text" style={{ textAlign: 'right' }}>
+                    Not Registered?
+                    {' '}
+                    <Button type="link" style={{ margin: '0px', padding: '0px' }} onClick={() => history.push('/register')}>Click here to register</Button>
+                  </h6>
                 </Col>
               </Row>
             </Col>
           </Row>
         </Col>
         <Col md={2} xs={1} />
-        <Col md={8} xs={0} style={{ marginTop: '120px' }}>
+        <Col md={8} xs={0}>
           <img src={loginImage} alt="crash" className="login-image" />
         </Col>
         <Col md={2} xs={1} />

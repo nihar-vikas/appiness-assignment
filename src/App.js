@@ -10,7 +10,10 @@ import LoginForm from './components/loginForm';
 import Dashboard from './components/dashboard';
 import LogOutPage from './components/logOutpage';
 import PageNotFound from './components/pageNotFound';
-
+import RegistrationForm from './components/registrationForm';
+import PaymentSuccessPage from './components/paymentStatusPages/paymentSuccessPage';
+import PaymentFailurePage from './components/paymentStatusPages/paymentFailurePage';
+// const userResponse = useSelector((state) => state.AuthReduser);
 const App = () => {
   const userResponse = useSelector((state) => state.AuthReduser);
   return (
@@ -23,14 +26,16 @@ const App = () => {
       </Row>
       <BrowserRouter>
         <Switch>
-          <Route path="/" exact component={userResponse?.authData?.userLogin ? () => <Redirect to="/dashboard" /> : LoginForm} />
-          <Route path="/dashboard" component={!userResponse?.authData?.userLogin ? () => <Redirect to="/" /> : Dashboard} />
-          <Route path="/logout" component={LogOutPage} />
+          <Route path="/" exact component={Dashboard} />
+          <Route path="/register" exact component={userResponse?.authData?.userLogin ? () => <Redirect to="/" /> : RegistrationForm} />
+          <Route path="/login" exact component={userResponse?.authData?.userLogin ? () => <Redirect to="/" /> : LoginForm} />
+          <Route path="/logout" exact component={LogOutPage} />
+          <Route path="/payment_success/:id" exact component={PaymentSuccessPage} />
+          <Route path="/payment_failure" exact component={PaymentFailurePage} />
           <Route path="**" component={PageNotFound} />
         </Switch>
       </BrowserRouter>
     </>
   );
 };
-
 export default App;

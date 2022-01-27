@@ -6,8 +6,9 @@ import {
 } from 'redux';
 import thunk from 'redux-thunk';
 import AuthReduser from './auth';
+import PaymentReduser from './paymentReduser';
 
-const reducers = combineReducers({ AuthReduser });
+const reducers = combineReducers({ AuthReduser, PaymentReduser });
 
 const composeEnhancers = typeof window === 'object'
 && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
